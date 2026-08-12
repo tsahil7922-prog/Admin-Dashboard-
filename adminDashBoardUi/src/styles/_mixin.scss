@@ -5,7 +5,7 @@
 }
 
 @mixin flex(
-  $dir: 3px,
+  $dir: row,
   $justifyContent: center,
   $alignItems: center,
   $gap: 1rem
@@ -17,9 +17,9 @@
   gap: $gap;
 }
 
-@mixin grid($row: unset, $col: 1fr, $gap: 1rem) {
+@mixin grid( $col: 1fr, $gap: 1rem,$row: unset) {
   display: grid;
-  grid-template-columns: repeat($col, minmax(200px, 1fr));
+  grid-template-columns:$col;
   grid-template-rows: $row;
   gap: $gap;
 }

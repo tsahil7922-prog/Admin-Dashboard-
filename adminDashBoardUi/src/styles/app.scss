@@ -1,33 +1,46 @@
-@use "_mixin";
-:root{
-    line-height: 1.5;
-    font-weight: 400;
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+@import "mixin";
+:root {
+  line-height: 1.5;
+  font-weight: 400;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
-
-
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 a{
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
-.red{
-    color:red
+.red {
+  color: red;
 }
 
-.purple{
-    color:rgb(170, 0, 255);
+.purple {
+  color: rgb(170, 0, 255);
 }
 
-.green{
-    color:rgb(0, 195, 0);
+.green {
+  color: rgb(0, 195, 0);
 }
 
+.adminContainer {
+  @include grid(1fr 4fr, 2rem);
+  height: 100vh;
+  background-color: rgb(240, 240, 247);
+  > aside {
+    width: 100%;
+    background-color: white;
+    padding: 1rem;
+    z-index: 100;
+    overflow-y: auto;
+    &::-webkit-scrollbar{
+      display: none;
+      width: 0.5rem;
+    }
+  }
+}

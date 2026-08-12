@@ -4,6 +4,9 @@ const DashBoard = () => {
   return (
     <div className="adminContainer">
       <AdminSideBar />
+      <main>
+        hiiii
+      </main>
       {/* Main */}
     </div>
   );
