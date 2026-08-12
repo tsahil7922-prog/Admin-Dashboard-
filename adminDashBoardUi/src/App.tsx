@@ -9,21 +9,28 @@ const Transaction = lazy(() => import("./pages/Transaction"));
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/admin",
     element: <DashBoard />,
   },
   {
-    path: "/products",
+    path: "/admin/products",
     element: <Products />,
   },
   {
-    path: "/customers",
+    path: "/admin/customer",
     element: <Customer />,
   },
   {
-    path: "/transactions",
+    path: "/admin/transactions",
     element: <Transaction />,
   },
+
+  // charts
+
+
+
+
+  // aApps
 ]);
 
 function App() {
