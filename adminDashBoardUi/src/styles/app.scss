@@ -1,4 +1,5 @@
 @import "mixin";
+@import "dashboard";
 :root {
   line-height: 1.5;
   font-weight: 400;
@@ -27,20 +28,123 @@ a{
 .green {
   color: rgb(0, 195, 0);
 }
-
 .adminContainer {
   @include grid(1fr 4fr, 2rem);
-  height: 100vh;
-  background-color: rgb(240, 240, 247);
+
+  min-height: 100vh;
+  background-color: #f5f6fa;
+
   > aside {
     width: 100%;
-    background-color: white;
-    padding: 1rem;
-    z-index: 100;
+    min-height: 100vh;
+    background-color: #ffffff;
+    padding: 1.5rem 1rem;
+    border-right: 1px solid #eeeeee;
+
     overflow-y: auto;
-    &::-webkit-scrollbar{
+
+    &::-webkit-scrollbar {
       display: none;
-      width: 0.5rem;
+    }
+
+    // Logo
+    > h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      padding: 0 1rem;
+      margin-bottom: 2.5rem;
+
+      color: #1f2937;
+      letter-spacing: -0.5px;
+    }
+
+    // Dashboard / Charts sections
+    > div {
+      margin: 0 0.5rem 2rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      // Section heading
+      > h5 {
+        @include heading(2px);
+
+        margin: 0 0 0.8rem 0.7rem;
+
+        font-size: 0.72rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+
+        color: #9ca3af;
+      }
+
+      // Menu list
+      > ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        > li {
+          width: 100%;
+
+          > a {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+
+            width: 100%;
+            padding: 0.75rem 0.9rem;
+
+            border-radius: 0.6rem;
+
+            color: #6b7280;
+            font-size: 0.92rem;
+            font-weight: 500;
+
+            transition:
+              background-color 0.2s ease,
+              color 0.2s ease,
+              transform 0.2s ease;
+
+            > svg {
+              width: 1.2rem;
+              height: 1.2rem;
+
+              flex-shrink: 0;
+
+              transition: transform 0.2s ease;
+            }
+
+            &:hover {
+              background-color: #f3f4f6;
+              color: #111827;
+
+              > svg {
+                transform: scale(1.08);
+              }
+            }
+          }
+
+          // Active menu
+          &.active {
+            > a {
+              background-color: #eef2ff;
+              color: #4f46e5;
+              font-weight: 600;
+
+              > svg {
+                color: #4f46e5;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

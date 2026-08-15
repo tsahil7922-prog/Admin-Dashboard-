@@ -9,7 +9,7 @@ const Transaction = lazy(() => import("./pages/Transaction"));
 
 const router = createBrowserRouter([
   {
-    path: "/admin",
+    path: "/admin/dashboard",
     element: <DashBoard />,
   },
   {
