@@ -2,6 +2,14 @@ import React from "react";
 import AdminSideBar from "../components/AdminSideBar";
 import { BsSearch } from "react-icons/bs";
 import { HiTrendingDown, HiTrendingUp } from "react-icons/hi";
+import dashboardData from "../assets/data.json";
+interface WidgetItemsProps {
+  heading: string;
+  value: number;
+  percent: number;
+  color: string;
+  amount?: boolean;
+}
 
 interface WidgetItemsProps {
   heading: string;
@@ -11,7 +19,7 @@ interface WidgetItemsProps {
   amount?: boolean;
 }
 
-const widgetItem = ({
+const WidgetItem = ({
   heading,
   value,
   percent,
@@ -26,8 +34,7 @@ const widgetItem = ({
 
       {percent > 0 ? (
         <span className="green">
-          <HiTrendingUp />
-          +{percent}%
+          <HiTrendingUp />+{percent}%
         </span>
       ) : (
         <span className="red">
@@ -62,10 +69,7 @@ const DashBoard = () => {
           <div className="searchBox">
             <BsSearch />
 
-            <input
-              type="text"
-              placeholder="Search for data, users, docs..."
-            />
+            <input type="text" placeholder="Search for data, users, docs..." />
           </div>
 
           <img
@@ -76,38 +80,54 @@ const DashBoard = () => {
 
         {/* Dashboard Widgets */}
         <section className="widgetcontainer">
-          {widgetItem({
-            heading: "Total Revenue",
-            value: 125000,
-            percent: 12.5,
-            color: "#6366f1",
-            amount: true,
-          })}
+          {dashboardData.widgets.map((widget) => (
+            <WidgetItem key={widget.heading} {...widget} />
+          ))}
+        </section>
 
-          {widgetItem({
-            heading: "Total Users",
-            value: 8540,
-            percent: 8.2,
-            color: "#22c55e",
-          })}
+        {/* for graph */}
+        <section className="graphContainer">
+          <div className="revenueChart">
+            <h2>Revenue & Transaction</h2>
+            {/* graph here */}
+          </div>
+          <div className="dashboardCategory">
+            <h2>Inventory</h2>
 
-          {widgetItem({
-            heading: "Total Orders",
-            value: 1248,
-            percent: -3.4,
-            color: "#f59e0b",
-          })}
-
-          {widgetItem({
-            heading: "Total Products",
-            value: 342,
-            percent: 5.7,
-            color: "#ec4899",
-          })}
+            <div className="categoryList">
+              {dashboardData.categories.map((category) => (
+                <CategoryItem key={category.heading} {...category} />
+              ))}
+            </div>
+          </div>
         </section>
       </main>
     </div>
   );
 };
 
+interface CategoryItemsProps {
+  color: string;
+  value: number;
+  heading: string;
+}
+
+const CategoryItem = ({ color, heading, value }: CategoryItemsProps) => (
+  <div className="categoryItem">
+    <div className="categoryHeader">
+      <h5>{heading}</h5>
+      <span>{value}%</span>
+    </div>
+
+    <div className="categoryProgress">
+      <div
+        className="categoryProgressBar"
+        style={{
+          backgroundColor: color,
+          width: `${Math.min(value, 100)}%`,
+        }}
+      />
+    </div>
+  </div>
+);
 export default DashBoard;

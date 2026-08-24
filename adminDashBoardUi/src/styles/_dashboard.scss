@@ -16,7 +16,6 @@
     background-color: #ffffff;
     border-bottom: 1px solid #eeeeee;
 
-    // Search Box
     .searchBox {
       width: min(30rem, 60%);
       height: 2.75rem;
@@ -67,7 +66,6 @@
       }
     }
 
-    // User Image
     > img {
       @include square(2.5rem);
 
@@ -96,9 +94,6 @@
 
     @include grid(repeat(4, 1fr), 1.2rem);
 
-    // ==============================
-    // INDIVIDUAL WIDGET
-    // ==============================
     .widget {
       min-height: 9rem;
 
@@ -122,26 +117,19 @@
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
       }
 
-      // ==============================
-      // WIDGET INFORMATION
-      // ==============================
       .widgetInfo {
         width: 100%;
 
         > p {
           margin-bottom: 0.5rem;
-
           color: #9ca3af;
-
           font-size: 0.8rem;
           font-weight: 500;
         }
 
         > h4 {
           margin-bottom: 0.5rem;
-
           color: #1f2937;
-
           font-size: 1.5rem;
           font-weight: 700;
           line-height: 1.2;
@@ -167,33 +155,27 @@
         }
       }
 
-      // ==============================
-      // CIRCLE / PERCENTAGE
-      // ==============================
       .widgetCircle {
         @include square(4.2rem);
 
         @include flex(row, center, center, 0);
 
         flex-shrink: 0;
-
         border-radius: 50%;
 
         background: conic-gradient(
           var(--circle-color) 0deg,
-          var(--circle-color) 250deg,
-          #eef0f4 250deg,
+          var(--circle-color) var(--circle-degree),
+          #eef0f4 var(--circle-degree),
           #eef0f4 360deg
         );
 
         position: relative;
 
-        // Inner white circle
         &::before {
           content: "";
 
           @include square(3.25rem);
-
           @include posCenter;
 
           border-radius: 50%;
@@ -205,7 +187,6 @@
           z-index: 1;
 
           color: #374151;
-
           font-size: 0.75rem;
           font-weight: 700;
         }
@@ -214,8 +195,117 @@
   }
 
   // ==============================
-  // RESPONSIVE
+  // GRAPH CONTAINER
   // ==============================
+  .graphContainer {
+    width: 100%;
+    padding: 0 1.5rem 1.5rem;
+
+    @include flex(row, flex-start, stretch, 1.2rem);
+
+    .revenueChart {
+      flex: 2;
+
+      min-height: 20rem;
+
+      padding: 1.5rem;
+
+      background-color: #ffffff;
+      border: 1px solid #eeeeee;
+      border-radius: 0.8rem;
+
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+
+      > h2 {
+        margin-bottom: 1rem;
+
+        color: #1f2937;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+    }
+
+   // ==============================
+// INVENTORY / CATEGORY
+// ==============================
+
+.dashboardCategory {
+  flex: 1;
+
+  min-height: 20rem;
+
+  padding: 1.5rem;
+
+  background-color: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 0.8rem;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+
+  > h2 {
+    margin-bottom: 1.5rem;
+
+    color: #1f2937;
+
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .categoryList {
+    @include flex(column, flex-start, stretch, 1.25rem);
+  }
+
+  .categoryItem {
+    width: 100%;
+
+    .categoryHeader {
+      width: 100%;
+
+      @include flex(row, space-between, center, 1rem);
+
+      margin-bottom: 0.5rem;
+
+      > h5 {
+        color: #4b5563;
+
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+
+      > span {
+        color: #1f2937;
+
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+    }
+
+    .categoryProgress {
+      width: 100%;
+      height: 0.45rem;
+
+      overflow: hidden;
+
+      background-color: #eef0f4;
+
+      border-radius: 999px;
+
+      .categoryProgressBar {
+        height: 100%;
+
+        border-radius: inherit;
+
+        transition: width 0.3s ease;
+      }
+    }
+  }
+}
+
+
+
+  }
+
+  
 
   @media (max-width: 1200px) {
     .widgetcontainer {
@@ -237,12 +327,22 @@
 
       @include grid(1fr, 1rem);
     }
+
+    .graphContainer {
+      @include flex(column, flex-start, stretch, 1rem);
+      padding: 0 1rem 1rem;
+
+      .revenueChart,
+      .dashboardCategory {
+        flex: none;
+        width: 100%;
+      }
+    }
   }
 
   @media (max-width: 480px) {
     .bar {
       height: auto;
-
       padding: 1rem;
 
       .searchBox {
@@ -257,7 +357,6 @@
     .widgetcontainer {
       .widget {
         min-height: 8rem;
-
         padding: 1rem;
 
         .widgetInfo {

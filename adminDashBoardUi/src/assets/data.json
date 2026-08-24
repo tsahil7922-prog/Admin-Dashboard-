@@ -1,0 +1,51 @@
+{
+  "widgets": [
+    {
+      "heading": "Total Revenue",
+      "value": 125000,
+      "percent": 12.5,
+      "color": "#6366f1",
+      "amount": true
+    },
+    {
+      "heading": "Total Users",
+      "value": 8540,
+      "percent": 8.2,
+      "color": "#22c55e"
+    },
+    {
+      "heading": "Total Orders",
+      "value": 1248,
+      "percent": -3.4,
+      "color": "#f59e0b"
+    },
+    {
+      "heading": "Total Products",
+      "value": 342,
+      "percent": 5.7,
+      "color": "#ec4899"
+    }
+  ],
+  "categories": [
+    {
+      "heading": "Electronics",
+      "value": 78,
+      "color": "#6366f1"
+    },
+    {
+      "heading": "Clothing",
+      "value": 62,
+      "color": "#22c55e"
+    },
+    {
+      "heading": "Furniture",
+      "value": 45,
+      "color": "#f59e0b"
+    },
+    {
+      "heading": "Accessories",
+      "value": 35,
+      "color": "#ec4899"
+    }
+  ]
+}
