@@ -3,6 +3,7 @@ import AdminSideBar from "../components/AdminSideBar";
 import { BsSearch } from "react-icons/bs";
 import { HiTrendingDown, HiTrendingUp } from "react-icons/hi";
 import dashboardData from "../assets/data.json";
+import { BarChart } from "../components/Charts";
 interface WidgetItemsProps {
   heading: string;
   value: number;
@@ -90,6 +91,15 @@ const DashBoard = () => {
           <div className="revenueChart">
             <h2>Revenue & Transaction</h2>
             {/* graph here */}
+            <BarChart
+              data_1={[300, 144, 433, 655]}
+              data_2={[200, 300, 250, 400]}
+              title_1="Revenue"
+              bgColor_1="rgb(53, 162, 235)"
+              bgColor_2="rgb(255, 159, 64)"
+              labels={["Q1", "Q2", "Q3", "Q4"]} // optional — na do to default "months" array use hoga
+              horizontal={false} // optional — na do to default false (vertical bars)
+            />
           </div>
           <div className="dashboardCategory">
             <h2>Inventory</h2>
